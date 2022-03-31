@@ -107,7 +107,7 @@
         <plugin>
           <groupId>org.apache.maven.plugins</groupId>
           <artifactId>maven-compiler-plugin</artifactId>
-          <version>${maven-compiler-plugin}</version>
+          <version>${maven-compiler-plugin.version}</version>
           <configuration>
             <encoding>UTF-8</encoding>
             <release>${java.version}</release>
@@ -264,7 +264,7 @@
         <plugin>
           <groupId>org.jetbrains.dokka</groupId>
           <artifactId>dokka-maven-plugin</artifactId>
-          <version>${dokka-maven-plugin}</version>
+          <version>${dokka-maven-plugin.version}</version>
           <executions>
             <execution>
               <phase>package</phase>
@@ -291,7 +291,7 @@
         <plugin>
           <groupId>org.apache.maven.plugins</groupId>
           <artifactId>maven-javadoc-plugin</artifactId>
-          <version>${maven-javadoc-plugin}</version>
+          <version>${maven-javadoc-plugin.version}</version>
           <executions>
             <execution>
               <id>attach-javadocs</id>
@@ -309,7 +309,7 @@
         <plugin>
           <groupId>org.codehaus.mojo</groupId>
           <artifactId>build-helper-maven-plugin</artifactId>
-          <version>${build-helper-maven-plugin}</version>
+          <version>${build-helper-maven-plugin.version}</version>
           <executions>
             <execution>
               <id>add-kotlin-source</id>
