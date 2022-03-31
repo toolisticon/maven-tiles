@@ -7,7 +7,7 @@
   <parent>
     <groupId>io.toolisticon.maven.tile._examples</groupId>
     <artifactId>toolisticon-maven-tiles-examples</artifactId>
-    <version>0.0.1-SNAPSHOT</version>
+    <version>0.0.1</version>
   </parent>
 
   <artifactId>kotlin-compile-tile-example</artifactId>
