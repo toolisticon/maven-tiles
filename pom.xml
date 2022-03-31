@@ -1,10 +1,10 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
   <modelVersion>4.0.0</modelVersion>
 
   <groupId>io.toolisticon.maven.tile</groupId>
   <artifactId>toolisticon-maven-tiles</artifactId>
-  <version>0.0.1</version>
+  <version>0.0.2</version>
   <packaging>pom</packaging>
 
   <name>${project.artifactId}</name>
@@ -12,9 +12,20 @@
   <url>https://github.com/toolisticon/toolisticon-maven-tiles/</url>
 
   <properties>
-    <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+    <project.encoding>UTF-8</project.encoding>
+
+    <project.reporting.outputEncoding>${project.encoding}</project.reporting.outputEncoding>
     <kotlin.version>1.6.10</kotlin.version>
     <java.version>11</java.version>
+
+
+    <!-- plugin versions used in tiles -->
+    <tiles-maven-plugin.version>2.27</tiles-maven-plugin.version>
+    <maven-compiler-plugin.version>3.10.1</maven-compiler-plugin.version>
+    <build-helper-maven-plugin.version>3.3.0</build-helper-maven-plugin.version>
+    <dokka-maven-plugin.version>1.6.10</dokka-maven-plugin.version>
+    <maven-javadoc-plugin.version>3.3.2</maven-javadoc-plugin.version>
+    <maven-source-plugin.version>3.2.1</maven-source-plugin.version>
   </properties>
 
   <modules>
@@ -96,7 +107,7 @@
         <plugin>
           <groupId>org.apache.maven.plugins</groupId>
           <artifactId>maven-compiler-plugin</artifactId>
-          <version>3.10.1</version>
+          <version>${maven-compiler-plugin.version}</version>
           <configuration>
             <encoding>UTF-8</encoding>
             <release>${java.version}</release>
@@ -253,7 +264,7 @@
         <plugin>
           <groupId>org.jetbrains.dokka</groupId>
           <artifactId>dokka-maven-plugin</artifactId>
-          <version>1.6.10</version>
+          <version>${dokka-maven-plugin.version}</version>
           <executions>
             <execution>
               <phase>package</phase>
@@ -280,7 +291,7 @@
         <plugin>
           <groupId>org.apache.maven.plugins</groupId>
           <artifactId>maven-javadoc-plugin</artifactId>
-          <version>3.3.2</version>
+          <version>${maven-javadoc-plugin.version}</version>
           <executions>
             <execution>
               <id>attach-javadocs</id>
@@ -298,7 +309,7 @@
         <plugin>
           <groupId>org.codehaus.mojo</groupId>
           <artifactId>build-helper-maven-plugin</artifactId>
-          <version>3.3.0</version>
+          <version>${build-helper-maven-plugin.version}</version>
           <executions>
             <execution>
               <id>add-kotlin-source</id>
@@ -446,7 +457,7 @@
         <plugin>
           <groupId>io.repaint.maven</groupId>
           <artifactId>tiles-maven-plugin</artifactId>
-          <version>2.27</version>
+          <version>${tiles-maven-plugin.version}</version>
           <extensions>true</extensions>
           <configuration>
             <filtering>true</filtering>

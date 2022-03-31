@@ -4,6 +4,12 @@
   xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
   <modelVersion>4.0.0</modelVersion>
 
+  <!--
+
+    Import this tile to your project to get a working kotlin configuration out of the box.
+
+  -->
+
   <dependencies>
     <dependency>
       <groupId>org.jetbrains.kotlin</groupId>
@@ -34,8 +40,8 @@
     <plugins>
       <!-- KOTLIN COMPILER -->
       <plugin>
-        <artifactId>kotlin-maven-plugin</artifactId>
         <groupId>org.jetbrains.kotlin</groupId>
+        <artifactId>kotlin-maven-plugin</artifactId>
         <version>${kotlin.version}</version>
         <configuration>
           <jvmTarget>${java.version}</jvmTarget>
@@ -89,9 +95,9 @@
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-compiler-plugin</artifactId>
-        <version>3.10.1</version>
+        <version>@maven-compiler-plugin.version@</version>
         <configuration>
-          <encoding>${project.build.sourceEncoding}</encoding>
+          <encoding>@project.encoding@</encoding>
           <source>${java.version}</source>
           <target>${java.version}</target>
           <forceJavacCompilerUse>true</forceJavacCompilerUse>
@@ -128,8 +134,8 @@
       <!-- Source from Kotlin -->
       <plugin>
         <groupId>org.codehaus.mojo</groupId>
-        <artifactId>build-helper-maven-plugin</artifactId>
-        <version>3.3.0</version>
+        <artifactId>build-helper-maven-plugin.version</artifactId>
+        <version>@build-helper-maven-plugin.version@</version>
         <executions>
           <execution>
             <id>add-kotlin-source</id>
@@ -150,7 +156,7 @@
       <plugin>
         <groupId>org.jetbrains.dokka</groupId>
         <artifactId>dokka-maven-plugin</artifactId>
-        <version>1.6.10</version>
+        <version>@dokka-maven-plugin.version@</version>
         <executions>
           <execution>
             <phase>package</phase>
@@ -162,7 +168,6 @@
         </executions>
         <configuration>
           <jdkVersion>${java.version}</jdkVersion>
-          <skip>true</skip>
           <!--
           <includes>
             <include>packages.md</include>
@@ -178,7 +183,7 @@
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-javadoc-plugin</artifactId>
-        <version>3.3.2</version>
+        <version>@maven-javadoc-plugin.version@</version>
         <executions>
           <execution>
             <id>attach-javadocs</id>
@@ -186,7 +191,27 @@
               <goal>jar</goal>
             </goals>
             <configuration>
-              <encoding>UTF-8</encoding>
+              <encoding>@project.encoding@</encoding>
+            </configuration>
+          </execution>
+        </executions>
+      </plugin>
+
+      <!-- Attach Sources -->
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-source-plugin</artifactId>
+        <version>@maven-source-plugin.version@</version>
+        <executions>
+          <execution>
+            <id>attach-sources</id>
+            <phase>package</phase>
+            <goals>
+              <goal>jar</goal>
+            </goals>
+            <configuration>
+              <attach>true</attach>
+              <forceCreation>true</forceCreation>
             </configuration>
           </execution>
         </executions>
