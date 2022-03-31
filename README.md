@@ -16,3 +16,50 @@ This is a collection of tiles we re-use for our own OSS projects. It is [not enc
 
 That being said ... let's have some fun with tiles.
 
+## kotlin-compile-tile
+
+Defined in [kotlin-compile-tile/tile.xml](/kotlin-compile-tile/tile.xml)
+
+**Usage**
+
+```xml
+  <properties>
+    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    <kotlin.version>1.6.10</kotlin.version>
+    <java.version>17</java.version>
+  </properties>
+
+  <build>
+    <plugins>
+      <plugin>
+        <groupId>io.repaint.maven</groupId>
+        <artifactId>tiles-maven-plugin</artifactId>
+        <extensions>true</extensions>
+        <configuration>
+          <filtering>true</filtering>
+          <tiles>
+            <tile>io.toolisticon.maven.tile:kotlin-compile-tile:${project.parent.version}</tile>
+          </tiles>
+        </configuration>
+      </plugin>
+    </plugins>
+  </build>
+```
+
+**required properties**
+
+* `${kotlin.version}`
+* `${java.version}`
+* `${project.build.sourceEncoding}` 
+
+**Features**
+
+* provides dependencies to
+  * `kotlin-stdlib-jdk8`
+  * `kotlin-reflect`
+* Provides plugins 
+  * `kotlin-maven-plugin` - includeing allopen and noarg dependencies
+  * `maven-compiler-plugin` - disabling default java compile
+  * `build-helper-maven-plugin` to include kotlin sources in deployment
+  * `dokka-maven-plugin` for kdoc documentation 
+  * `maven-javadoc-plugin`
