@@ -7,7 +7,7 @@
   <parent>
     <groupId>io.toolisticon.maven.tile</groupId>
     <artifactId>toolisticon-maven-tiles</artifactId>
-    <version>0.0.1</version>
+    <version>0.0.2-SNAPSHOT</version>
   </parent>
 
   <groupId>io.toolisticon.maven.tile._examples</groupId>
