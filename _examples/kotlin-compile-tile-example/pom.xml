@@ -27,7 +27,7 @@
         <configuration>
           <filtering>true</filtering>
           <tiles>
-            <tile>io.toolisticon.maven.tile:kotlin-compile-tile:${project.parent.version}</tile>
+            <tile>io.toolisticon.maven.tile:kotlin-compile-tile:${project.version}</tile>
           </tiles>
         </configuration>
       </plugin>
