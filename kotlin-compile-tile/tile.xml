@@ -168,7 +168,6 @@
         </executions>
         <configuration>
           <jdkVersion>${java.version}</jdkVersion>
-          <skip>true</skip>
           <!--
           <includes>
             <include>packages.md</include>
