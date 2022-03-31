@@ -2,92 +2,27 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
   <modelVersion>4.0.0</modelVersion>
 
-  <groupId>BASE_GROUP_ID</groupId>
-  <artifactId>BASE_ARTIFACT_ID</artifactId>
+  <groupId>io.toolisticon.maven.tile</groupId>
+  <artifactId>toolisticon-maven-tiles</artifactId>
   <version>0.0.1-SNAPSHOT</version>
+  <packaging>pom</packaging>
+
   <name>${project.artifactId}</name>
-  <description>BASE_DESCRIPTION</description>
-  <url>https://github.com/GITHUB_ORGANIZATION/GITHUB_REPOSITORY/</url>
+  <description>Reusable, modular maven-tiles for holistic OSS projects.</description>
+  <url>https://github.com/toolisticon/toolisticon-maven-tiles/</url>
 
   <properties>
     <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
     <kotlin.version>1.6.10</kotlin.version>
     <java.version>11</java.version>
-
-    <!-- TEST -->
-    <kotlin-logging.version>2.1.21</kotlin-logging.version>
-    <junit5.version>5.8.2</junit5.version>
-    <mockito.version>4.0.0</mockito.version>
-    <assertj.version>3.22.0</assertj.version>
   </properties>
 
-  <dependencyManagement>
-    <dependencies>
-      <dependency>
-        <groupId>org.jetbrains.kotlin</groupId>
-        <artifactId>kotlin-bom</artifactId>
-        <version>${kotlin.version}</version>
-        <scope>import</scope>
-        <type>pom</type>
-      </dependency>
-      <dependency>
-        <groupId>org.junit</groupId>
-        <artifactId>junit-bom</artifactId>
-        <version>${junit5.version}</version>
-        <type>pom</type>
-        <scope>import</scope>
-      </dependency>
-    </dependencies>
-  </dependencyManagement>
-
-  <dependencies>
-    <!-- KOTLIN -->
-    <dependency>
-      <groupId>org.jetbrains.kotlin</groupId>
-      <artifactId>kotlin-stdlib-jdk8</artifactId>
-    </dependency>
-    <dependency>
-      <groupId>org.jetbrains.kotlin</groupId>
-      <artifactId>kotlin-reflect</artifactId>
-    </dependency>
-    <dependency>
-      <groupId>io.github.microutils</groupId>
-      <artifactId>kotlin-logging-jvm</artifactId>
-      <version>${kotlin-logging.version}</version>
-    </dependency>
-
-    <!-- TEST -->
-    <dependency>
-      <groupId>org.mockito.kotlin</groupId>
-      <artifactId>mockito-kotlin</artifactId>
-      <version>${mockito.version}</version>
-      <scope>test</scope>
-    </dependency>
-    <dependency>
-      <groupId>org.junit.jupiter</groupId>
-      <artifactId>junit-jupiter</artifactId>
-      <scope>test</scope>
-    </dependency>
-    <dependency>
-      <groupId>org.junit.jupiter</groupId>
-      <artifactId>junit-jupiter-params</artifactId>
-      <scope>test</scope>
-    </dependency>
-    <dependency>
-      <groupId>org.assertj</groupId>
-      <artifactId>assertj-core</artifactId>
-      <version>${assertj.version}</version>
-      <scope>test</scope>
-    </dependency>
-    <dependency>
-      <groupId>org.jetbrains.kotlin</groupId>
-      <artifactId>kotlin-test-junit5</artifactId>
-      <scope>test</scope>
-    </dependency>
-  </dependencies>
+  <modules>
+    <module>kotlin-compile-tile</module>
+  </modules>
 
   <build>
-    <defaultGoal>clean jacoco:prepare-agent package</defaultGoal>
+    <defaultGoal>clean package</defaultGoal>
     <resources>
       <!-- ignore gitkeep marker files -->
       <resource>
@@ -507,6 +442,16 @@
             </execution>
           </executions>
         </plugin>
+
+        <plugin>
+          <groupId>io.repaint.maven</groupId>
+          <artifactId>tiles-maven-plugin</artifactId>
+          <version>2.27</version>
+          <extensions>true</extensions>
+          <configuration>
+            <filtering>true</filtering>
+          </configuration>
+        </plugin>
       </plugins>
     </pluginManagement>
 
@@ -517,16 +462,9 @@
       </plugin>
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
-        <artifactId>maven-compiler-plugin</artifactId>
-      </plugin>
-      <plugin>
-        <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-enforcer-plugin</artifactId>
       </plugin>
-      <plugin>
-        <groupId>org.jetbrains.kotlin</groupId>
-        <artifactId>kotlin-maven-plugin</artifactId>
-      </plugin>
+
     </plugins>
   </build>
 
@@ -585,6 +523,12 @@
         </plugins>
       </build>
     </profile>
+    <profile>
+      <id>_examples</id>
+      <modules>
+        <module>_examples</module>
+      </modules>
+    </profile>
   </profiles>
 
   <licenses>
@@ -595,9 +539,9 @@
   </licenses>
 
   <scm>
-    <connection>scm:git:git@github.com:GITHUB_ORGANIZATION/GITHUB_REPOSITORY.git</connection>
-    <url>scm:git:git@github.com:GITHUB_ORGANIZATION/GITHUB_REPOSITORY.git</url>
-    <developerConnection>scm:git:git@github.com:GITHUB_ORGANIZATION/GITHUB_REPOSITORY.git</developerConnection>
+    <connection>scm:git:git@github.com:toolisticon/toolisticon-maven-tiles.git</connection>
+    <url>scm:git:git@github.com:toolisticon/toolisticon-maven-tiles.git</url>
+    <developerConnection>scm:git:git@github.com:toolisticon/toolisticon-maven-tiles.git</developerConnection>
     <tag>HEAD</tag>
   </scm>
 
@@ -619,17 +563,6 @@
       <roles>
         <role>Product Owner</role>
         <role>Developer</role>
-      </roles>
-      <organization>Holisticon AG</organization>
-      <organizationUrl>https://holisticon.de</organizationUrl>
-    </developer>
-    <developer>
-      <id>zambrovski</id>
-      <name>Simon Zambrovski</name>
-      <roles>
-        <role>Product Owner</role>
-        <role>Developer</role>
-        <role>Toolsmith</role>
       </roles>
       <organization>Holisticon AG</organization>
       <organizationUrl>https://holisticon.de</organizationUrl>
