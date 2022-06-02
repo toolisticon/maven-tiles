@@ -2,7 +2,7 @@
 
 Reusable, modular [maven-tiles](https://github.com/repaint-io/maven-tiles) for holistic OSS projects.
 
-
+[![incubating](https://img.shields.io/badge/lifecycle-INCUBATING-orange.svg)](https://github.com/holisticon#open-source-lifecycle)
 ![warning](https://img.shields.io/badge/WARNING-internal%20use%20only-red)
 [![Build Status](https://github.com/toolisticon/maven-tiles/workflows/Development%20branches/badge.svg)](https://github.com/toolisticon/maven-tiles/actions)
 [![sponsored](https://img.shields.io/badge/sponsoredBy-Holisticon-RED.svg)](https://holisticon.de/)
